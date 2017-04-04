@@ -1,0 +1,48 @@
+.removeicon{
+    cursor: pointer;
+}
+.form-icon{
+    margin-bottom: 5px;
+}
+input.ng-valid{
+    border-color: #27a4b0;
+    border-left: 5px solid #27a4b0;
+}
+input.ng-invalid{
+    border-color: #e73d4a;
+    border-left: 5px solid #e73d4a;
+}
+input.ng-invalid.ng-pristine {
+    border: 1px solid #c2cad8;
+}
+input.password-wrong{
+    border-color: #e73d4a;
+    border-left: 5px solid #e73d4a;
+}
+
+select.ng-valid{
+    border-color: #27a4b0;
+    border-left: 5px solid #27a4b0;
+}
+select.ng-invalid{
+    border-color: #e73d4a;
+    border-left: 5px solid #e73d4a;
+}
+select.ng-invalid.ng-pristine {
+    border: 1px solid #c2cad8;
+}
+select.not-choose{
+    border-color: #e73d4a;
+    border-left: 5px solid #e73d4a;
+}
+
+input.not-url{
+    border-color: #e73d4a;
+    border-left: 5px solid #e73d4a;
+}
+input.not-url.ng-pristine {
+    border: 1px solid #c2cad8;
+}
+.removeicon{
+    color: #e73d4a;
+}

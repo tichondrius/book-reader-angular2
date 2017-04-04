@@ -1,0 +1,117 @@
+      
+            <h1 class="page-title"><i class="fa fa-area-chart"></i> Thêm truyện mới</h1>
+            <!-- END PAGE HEADER-->
+            <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <i class="icon-home"></i>
+                                <a [routerLink]="['/home']">Home</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>     
+                                <a>Thêm truyện</a>
+                            </li>
+                        </ul>  
+            </div>
+            <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            
+                
+        <div class="portlet light ">
+                                <div class="portlet-title tabbable-line">
+                                    <div class="caption">
+                                        <i class="icon-bubbles font-dark hide"></i>
+                                        <span class="caption-subject font-dark bold uppercase">Thêm truyện mới của tôi</span>
+                                    </div>
+                                    <ul class="nav nav-tabs">
+                                        <li class="">
+                                            <a href="#portlet_comments_1" data-toggle="tab" aria-expanded="false"> Upload ảnh </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="#portlet_comments_2" data-toggle="tab" aria-expanded="true"> Dán link ảnh </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="portlet-body">        
+                                    <div class="tab-content">
+                                        <div class="tab-pane" id="portlet_comments_1">
+
+                                        </div>
+                                            <!-- BEGIN: Comments -->   
+                                        <div class="tab-pane active" id="portlet_comments_2">
+                                            
+                                        <div *ngIf="messages && messages.length" class="note note-danger">
+                                                <ul *ngFor='let message of messages'>
+                                                    <li>{{message}}</li>
+                                                </ul>
+                                        </div>
+                                        <div *ngIf="success == true" class="note note-success">
+                                        <p>Thêm truyện mới thành công !</p>
+                                        </div>
+                                        <loading-bar *ngIf="success == true"></loading-bar>
+                                        <form *ngIf="success == false" #createCat="ngForm"  (ngSubmit)="onSubmit()">
+                                             <div class="form-group">
+                                                <label class="control-label">Tên truyện*</label>
+                                                <input required [(ngModel)] = 'model.name' name="name" class="form-control"/>
+                                            </div>
+                                           
+                                            <div class="form-group">
+                                                <label class="control-label">Giới thiệu truyện*</label>
+                                                <input required [(ngModel)] = 'model.introduce' name="introduce" class="form-control"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Chọn 1 hoặc nhiều thể loại*</label>
+                                                <select [ngClass]="{'enough-type': model.types.length <= 0}" class="form-control" [(ngModel)] = 'choosetype' name="choosetype" (change)='onChange($event.target.value)'>
+                                                    <option value="-1">Chọn thể loại</option>
+                                                    <option *ngFor='let type of types' value='{{type._id}}'>&#xf067; {{type.name}}</option>
+                                                </select>
+
+                                                <div *ngIf='model.types.length' style="margin-top: 10px;">
+                                                    Thể loại chọn: <span *ngFor='let type of model.types' 
+                                                           class="tag label label-success tag-type">
+                                                           <i class="fa fa-tags" aria-hidden="true"></i> {{type.name}} <i (click) = 'removeType(type)' class="fa fa-times pointer-hover" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                             <div class="form-group">
+                                                <label class="control-label">Loại truyện*</label>
+                                                <select required class="form-control" [(ngModel)] = 'model.type' name="type">
+                                                    <option value="1">Truyện tranh</option>
+                                                    <option value="2">Truyện chữ</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Tác giả hoặc nguồn*</label>
+                                                <input required [(ngModel)] = 'model.author' name="author" class="form-control"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Link ảnh đề </label>
+                                                <ul class="nav nav-tabs">
+                                                    <li class="">
+                                                        <a href="#img_1" data-toggle="tab" aria-expanded="false"> Dán link ảnh </a>
+                                                    </li>
+                                                    <li class="active">
+                                                        <a href="#img_2" data-toggle="tab" aria-expanded="true"> Upload ảnh </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                        <div id="img_1" class="tab-pane">
+                                                            <input placeholder="http://..." [(ngModel)] = 'model.img' name="img" class="form-control"/>
+                                                        </div>
+                                                        <div id="img_2" class="tab-pane active">
+                                                            <input type="file" name="imgcat" class="form-control" (change)='onChangeFile($event.srcElement.files)'/>
+                                                        </div>
+                                                 </div>
+                                                
+                                            </div>       
+                                                <button type="submit" [disabled]="!createCat.form.valid || waitRequest == true || model.types.length <= 0" (click) = 'onSubmit()' id="btnLogin" type="button" class="btn btn-lg btn-block green" >Thêm truyện mới</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+

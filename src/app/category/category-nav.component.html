@@ -1,0 +1,13 @@
+     <li>
+           <a [routerLink] = "['/categories']" href="javascript:;" class="nav-link nav-toggle">
+                <span class="title">Xem danh sách truyện...</span>
+                <span class="arrow"></span>
+            </a>
+     </li>
+     <li *ngFor='let category of categories' class="nav-item">
+           <a [routerLink] = "['/categories', category._id]" href="javascript:;" class="nav-link nav-toggle">
+                <span class="title">{{category.name}}</span>
+                <span class="arrow"></span>
+            </a>
+     </li>
+     

@@ -1,0 +1,10 @@
+﻿
+            <div>
+                <h1 class="page-title"><i class="fa fa-area-chart"></i> Trang chủ <small>Cùng đọc truyện nào</small></h1>
+                <div class="row" *ngIf='lstStories'>
+                    <div *ngFor='let story of lstStories'>
+                            <story-box [story]='story'></story-box>     
+                    </div>
+                </div>
+            </div>
+            <loading-bar *ngIf='(!lstStories)'></loading-bar>

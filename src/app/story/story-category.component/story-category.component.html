@@ -1,0 +1,62 @@
+        <loading-bar *ngIf='!(category && lstStories)'></loading-bar>
+        
+        <div *ngIf='category && lstStories'>
+            <h1 class="page-title"><i class="fa fa-area-chart"></i> Truyện {{category.name}} <small>đăng bởi <a>{{category.postby.name}}</a></small></h1>
+            <!-- END PAGE HEADER-->
+            <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <i class="icon-home"></i>
+                                <a>Home</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>     
+                                <a>Truyện</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>
+                                <i class="fa fa-book" aria-hidden="true"></i>
+                                <a>{{category.name}}</a>
+                            </li>
+                           
+                        </ul>  
+            </div>
+            <div>
+                 <span *ngFor='let type of category.types' 
+                                [routerLink] ="['/types', type._id]" 
+                                class="tag label label-success tag-type pointer-hover">
+                                <i class="fa fa-tags" aria-hidden="true"></i> {{type.name}} 
+                  </span>
+            </div>
+            <br>
+            <div class="row vertical-align">
+                <div class="col-md-6 col-lg-6 vcenter">
+                      <div class="note note-success">
+                            <p><span class="bold-p">Tác giả:</span> {{category.author}}</p>
+                            <p><span class="bold-p">Người đăng:</span> {{category.postby.name}}
+                            <p><span class="bold-p">Giới thiệu truyện:</span> {{category.introduce}}</p>
+                      </div>
+                </div>
+                <div class="col-md-6 col-lg-6 vcenter">
+                    <img class="img-responsive img-introduce" src="{{category.img |urlImg}}">
+                </div>
+            </div>
+           
+            <div class="note note-danger list-chap" *ngIf='lstStories.length == 0'>
+                     Truyện chưa có chap nào !      
+            </div>
+            <div class="row list-chap">
+                <div class="col-lg-12">
+                    
+                       <div>
+                           <a *ngFor='let story of lstStories' [routerLink] = "['/stories', story._id]" class = 'btn btn-circle btn-sm green chap-item'>Chap {{story.part}}</a>
+                       </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                        <div *ngFor='let story of lstStories'>
+                                <story-box [story]='story'></story-box>
+                        </div>
+            </div>
+        </div>

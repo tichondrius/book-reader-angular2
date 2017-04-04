@@ -1,0 +1,133 @@
+ <h1 class="page-title">
+     <i class="fa fa-area-chart"></i> Trang cá nhân
+ </h1>
+            <!-- END PAGE HEADER-->
+<div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <i class="icon-home"></i>
+                                <a>Home</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>     
+                                <a>Trang cá nhân</a>
+                             
+                            </li>
+                            <li>
+                          
+                        </ul>  
+</div>
+<loading-bar *ngIf='!user'></loading-bar>
+<div class="row" *ngIf='user'>
+                       
+                            <div class="col-md-4">
+                                                                <div class="profile-sidebar">
+                                <!-- PORTLET MAIN -->
+                                <div class="portlet light profile-sidebar-portlet ">
+                                    <!-- SIDEBAR USERPIC -->
+                                    <div class="profile-userpic">
+                                        <img src="/assets/layouts/layout2/img/profile_user.jpg" class="img-responsive" alt="">
+                                    </div>
+                                    <!-- END SIDEBAR USERPIC -->
+                                    <!-- SIDEBAR USER TITLE -->
+                                    <div class="profile-usertitle">
+                                        <div class="profile-usertitle-name"> {{user.name}} </div>
+                                        <div class="profile-usertitle-job"> Developer </div>
+                                    </div>
+                                    <!-- END SIDEBAR USER TITLE -->
+                                    <!-- SIDEBAR BUTTONS -->
+                                    <div class="profile-userbuttons">
+
+                                    </div>
+                                    <!-- END SIDEBAR BUTTONS -->
+                                    <!-- SIDEBAR MENU -->
+                                    <div class="profile-usermenu">
+                                        <ul class="nav">
+                                            <li class="active">
+                                                <a href="page_user_profile_1.html">
+                                                    <i class="icon-home"></i> Overview </a>
+                                            </li>
+                                            <li>
+                                                <a href="page_user_profile_1_account.html">
+                                                    <i class="icon-settings"></i> Account Settings </a>
+                                            </li>
+                                            <li>
+                                                <a href="page_user_profile_1_help.html">
+                                                    <i class="icon-info"></i> Help </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- END MENU -->
+                                </div>
+                                <!-- END PORTLET MAIN -->
+                                <!-- PORTLET MAIN -->
+                                <div class="portlet light ">
+                                    <!-- STAT -->
+                                    <div class="row list-separated profile-stat">
+                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                            <div class="uppercase profile-stat-title"> 0 </div>
+                                            <div class="uppercase profile-stat-text"> Người theo  </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                            <div class="uppercase profile-stat-title"> 50 </div>
+                                            <div class="uppercase profile-stat-text"> Truyện </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                            <div class="uppercase profile-stat-title"> 100 </div>
+                                            <div class="uppercase profile-stat-text"> Chap truyện </div>
+                                        </div>
+                                    </div>
+                                    <!-- END STAT -->
+                                    <div>
+                                        <h4 class="profile-desc-title">Về {{user.name}}</h4>
+                                        <span class="profile-desc-text"> Lorem ipsum dolor sit amet diam nonummy nibh dolore. </span>
+                                        <div class="margin-top-20 profile-desc-link">
+                                            <i class="fa fa-globe"></i>
+                                            <a href="http://www.keenthemes.com">www.profile.com</a>
+                                        </div>
+                                        <div class="margin-top-20 profile-desc-link">
+                                            <i class="fa fa-twitter"></i>
+                                            <a href="http://www.twitter.com/keenthemes/">@profilename</a>
+                                        </div>
+                                        <div class="margin-top-20 profile-desc-link">
+                                            <i class="fa fa-facebook"></i>
+                                            <a href="http://www.facebook.com/keenthemes/">@profilename</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END PORTLET MAIN -->
+                            </div>
+                            </div>
+                            <div class="col-xs-8">
+                                                           <div class="profile-content">
+
+                                        <!-- BEGIN PORTLET -->
+                                        <div class="portlet light ">
+                                            <div class="portlet-title">
+                                                <div class="caption caption-md">
+                                                    <i class="icon-bar-chart theme-font hide"></i>
+                                                    <span class="caption-subject font-blue-madison bold uppercase">Hoạt động của bạn</span>
+                                                    <span class="caption-helper hide">weekly stats...</span>
+                                                </div>
+                                                <div class="actions">
+                                                    <div class="btn-group btn-group-devided" data-toggle="buttons">
+                                                        <label class="btn btn-transparent grey-salsa btn-circle btn-sm active">
+                                                            <input type="radio" name="options" class="toggle" id="option1">Hôm nay</label>
+                                                        <label class="btn btn-transparent grey-salsa btn-circle btn-sm">
+                                                            <input type="radio" name="options" class="toggle" id="option2">Theo tuần</label>
+                                                        <label class="btn btn-transparent grey-salsa btn-circle btn-sm">
+                                                            <input type="radio" name="options" class="toggle" id="option2">Theo tháng</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="row number-stats margin-bottom-30">
+                                                  
+                                                  
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END PORTLET -->
+                                    </div>
+                            </div>
+</div>

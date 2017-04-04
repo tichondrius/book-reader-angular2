@@ -1,0 +1,8 @@
+.story-box-image{
+    height: 180px;
+}
+@media (max-width: 580px){
+    .story-box-image{
+        height: auto;
+    }
+}

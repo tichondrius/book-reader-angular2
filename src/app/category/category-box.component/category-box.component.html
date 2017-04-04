@@ -1,0 +1,48 @@
+  <div *ngIf='category' class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <div class="portlet light portlet-fit ">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class=" icon-layers font-green"></i>
+                                        <span style="cursor: pointer" [routerLink] = "['/categories', category._id]" class="caption-subject font-green bold uppercase">{{category.name}} </span>
+                                        <div class="caption-desc font-grey-cascade">
+                                                            <div>
+                                                            <span class="tag label label-success pointer-hover" [routerLink] ="">Số chap: {{category.totalchap}}</span>
+                                                            <span class="tag label label-info">{{category.postby.name}}</span>
+                                                            </div>
+                                                             Giới thiệu: {{category.introduce | truncate:100}}<br>
+                                                             
+                                                             </div>
+                                         <div class="caption-desc font-grey-cascade detail-param" *ngIf='category.stories.length'>
+                                             Chap mới nhất: <span class="tag label label-success pointer-hover" [routerLink] ="['/stories', category.stories[0]._id]">{{category.stories[0].name}} #{{category.stories[0].part}}</span>
+                                         </div>
+                                          <div class="caption-desc font-grey-cascade detail-param" *ngIf='!category.stories.length'>
+                                             Chap mới nhất: <span class="tag label label-success pointer-hover"> Chưa có</span>
+                                         </div>                
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div class="mt-element-overlay">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="mt-overlay-2">
+                                                    <img class="story-box-image" [routerLink] = "" src="{{category.img|urlImg }}">
+                                                    <div class="mt-overlay">
+                                                        <a [routerLink] = "['/categories', category._id]" class="mt-info btn default btn-outline" href="#">CHI TIẾT TRUYỆN</a>
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="input-group">
+                                                    <div class="input-group-btn"> 
+                                                        <button style="display: none;"></button>
+                                                        <button  class="btn btn-default"><i class="fa fa-heart" style="color:red; font-size: 15px;"></i><span class="like-feed-@feed.ID badge"></span></button>
+                                                        <button  class="btn btn-default"><i class="fa fa-frown-o" style="color:red; font-size: 15px;"></i><span class="sad-feed-@feed.ID badge"></span></button>
+                                                        <button  class="btn btn-default"><i class="fa fa-paper-plane" style="color:blueviolet;font-size:18px;" aria-hidden="true"></i></button>
+                                                    </div>
+                                                    <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="newMessage" type="text" name="content" class="form-control" placeholder="Thêm bình luận">  
+                                  </div>
+                            </div>
+</div>

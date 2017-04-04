@@ -1,0 +1,58 @@
+      
+            <h1 class="page-title"><i class="fa fa-area-chart"></i> Đăng ký thành viên</h1>
+            <!-- END PAGE HEADER-->
+            <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <i class="icon-home"></i>
+                                <a [routerLink]="['/home']">Trang chủ</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>     
+                                <a>Đăng ký</a>
+                            </li>
+                        </ul>  
+            </div>
+            <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="portlet light ">
+               
+                <div class="portlet-body">
+                     <div *ngIf="messages && messages.length" class="note note-danger">
+                        <ul *ngFor='let message of messages'>
+                            <li>{{message}}</li>
+                        </ul>
+                     </div>
+                     <div *ngIf="success == true" class="note note-success">
+                      <p>Đăng ký thành công, trang tự động chuyển về trang đăng nhập trong vài giây</p>
+                    </div>
+                    <loading-bar *ngIf="success == true"></loading-bar>
+                    <form *ngIf="success == false">
+                        <div class="form-group">
+                            <label class="control-label">Tên đăng nhập*</label>
+                            <input #username='ngModel' required minlength="6" maxlength="25" [(ngModel)] = 'model.username' name="username" type="text" class="form-control input-lg">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Mật khẩu*</label>
+                            <input #password='ngModel' required minlength="6" [(ngModel)] = 'model.password' name="password" type="password" class="form-control input-lg">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Nhập lại mật khẩu*</label>
+                            <input [ngClass]="{'password-wrong': model.password != model.repassword}" #repassword='ngModel' required minlength="6" [(ngModel)] = 'model.repassword' name="repassword" type="password" class="form-control input-lg">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Tên của bạn*</label>
+                            <input #name='ngModel' required [(ngModel)] = 'model.name' name="text" type="name" class="form-control input-lg">
+                        </div>
+                            <button (click) = 'Login()' id="btnLogin" type="button" class="btn btn-lg btn-block green" >Tạo tài khoản</button>
+                        <br/>
+                        <hr/>
+                        <button [routerLink]="['/login']" type="button" class="btn btn-lg btn-block bg-color-red">Đăng nhập</button>
+                    </form>
+</div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+

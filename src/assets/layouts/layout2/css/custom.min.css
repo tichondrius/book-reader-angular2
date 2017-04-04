@@ -1,0 +1,13 @@
+.pointer-hover{
+    cursor: pointer;
+}
+.img-main{
+    width: 100%;
+    height: auto;
+}
+.tag-type{
+    margin-right: 5px;
+}
+.text-pre{
+    padding: 20px;
+}

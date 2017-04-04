@@ -1,0 +1,26 @@
+        <loading-bar *ngIf='!(lstCategories)'></loading-bar>
+        
+        <div *ngIf='lstCategories'>
+            <h1 class="page-title"><i class="fa fa-area-chart"></i> Danh sách truyện </h1>
+            <!-- END PAGE HEADER-->
+            <div class="page-bar">
+                
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <i class="icon-home"></i>
+                                <a>Home</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>     
+                                <a>Truyện</a>
+                            </li>
+                           
+                           
+                        </ul>  
+            </div>
+            <div class="row">
+                    <div *ngFor='let category of lstCategories'>
+                            <category-box [category]='category'></category-box>     
+                    </div>
+            </div>
+        </div>

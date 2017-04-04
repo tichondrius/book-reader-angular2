@@ -1,0 +1,101 @@
+      
+            <h1 class="page-title"><i class="fa fa-area-chart"></i> Đăng chap mới</h1>
+            <!-- END PAGE HEADER-->
+            <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <i class="icon-home"></i>
+                                <a [routerLink]="['/home']">Home</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>     
+                                <a>Đăng chap mới</a>
+                            </li>
+                        </ul>  
+            </div>
+            <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            
+                
+<div class="portlet light ">
+                                <div class="portlet-title tabbable-line">
+                                    <div class="caption">
+                                        <i class="icon-bubbles font-dark hide"></i>
+                                        <span class="caption-subject font-dark bold uppercase">Tạo chap truyện mới</span>
+                                    </div>
+                                    <ul class="nav nav-tabs">
+                                        <li class="">
+                                            <a href="#portlet_comments_1" data-toggle="tab" aria-expanded="false"> Upload ảnh </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="#portlet_comments_2" data-toggle="tab" aria-expanded="true"> Dán link ảnh </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="portlet-body">
+                                    
+                                    <div class="tab-content">
+                                        <div class="tab-pane" id="portlet_comments_1">
+
+                                        </div>
+                                            <!-- BEGIN: Comments -->
+                                            
+                                        <div class="tab-pane active" id="portlet_comments_2">
+                                            
+                                        <div *ngIf="messages && messages.length" class="note note-danger">
+                                                <ul *ngFor='let message of messages'>
+                                                    <li>{{message}}</li>
+                                                </ul>
+                                        </div>
+                                        <div *ngIf="success == true" class="note note-success">
+                                        <p>Đăng chap truyện thành công !</p>
+                                        </div>
+                                        <loading-bar *ngIf="success == true"></loading-bar>
+                                        <form *ngIf="success == false" #createStory="ngForm"  (ngSubmit)="onSubmit()">
+                                            <div class="form-group">
+                                                <label class="control-label">Chọn truyện thêm*</label>
+                                                <select [ngClass]="{'not-choose': model.cat==-1}" required [(ngModel)] = 'model.cat' name="category" class="form-control input-lg" (change)='onChange($event.target.value)'>
+                                                    <option value = '-1'>Chọn truyện...</option>
+                                                    <option *ngFor='let cat of categories' value="{{cat._id}}">{{cat.name}}</option>     
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Chap tiếp theo: </label> <span class="tag label label-success tag-type pointer-hover">
+                                <i aria-hidden="true" class="fa fa-tags"></i> {{model.part}} </span>
+                                            </div>
+                                             <div class="form-group">
+                                                <label class="control-label">Tên chap*</label>
+                                                <input required [(ngModel)] = 'model.name' name="name" class="form-control"/>
+                                                
+                                            </div>     
+                                             <div class="form-group">
+                                                <label class="control-label">Lời đề chap*</label>
+                                                <input required [(ngModel)] = 'model.text_pre' name="text_pre" class="form-control"/>
+                                                
+                                            </div>        
+                                            <div class="form-group">
+                                                <label class="control-label">Link ảnh đề*</label>
+                                                <input placeholder="http://..." [(ngModel)] = 'model.img_pre' name="img_pre" class="form-control"/>
+                                            </div>       
+
+                                             <div *ngIf='model.img_main' class="form-group">
+                                                <label class="control-label">Danh sách link ảnh truyện*</label>
+                                                <div *ngFor='let img of model.img_main; let i = index'>
+                                                    <div class="input-icon right form-icon">
+                                                        <i (click)='removeLink(i)' class="fa fa-times removeicon" aria-hidden="true"></i>
+                                                        <input [ngClass]="{'not-url': !regexHtml( img.url)}" type="text" class="form-control" [(ngModel)] = 'img.url' name="url"> 
+                                                    </div>
+                                                </div>
+                                                <a (click)='moreLinks()' class="btn btn-info">Thêm link</a>
+                                            </div>         
+                                                <button type="submit" [disabled]="!createStory.form.valid || model.cat == -1 || waitRequest == true" (click) = 'onSubmit()' id="btnLogin" type="button" class="btn btn-lg btn-block green" >Đăng chap truyện</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+

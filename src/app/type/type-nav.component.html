@@ -1,0 +1,13 @@
+     <li>
+           <a [routerLink] = "['/types']" href="javascript:;" class="nav-link nav-toggle">
+                <span class="title">Xem toàn bộ...</span>
+                <span class="arrow"></span>
+            </a>
+     </li>
+     <li *ngFor='let type of types' class="nav-item">
+           <a [routerLink] = "['/types', type._id]" href="javascript:;" class="nav-link nav-toggle">
+                <span class="title">{{type.name}}</span>
+                <span class="arrow"></span>
+            </a>
+     </li>
+    

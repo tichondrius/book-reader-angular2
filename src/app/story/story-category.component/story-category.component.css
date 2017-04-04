@@ -1,0 +1,22 @@
+.chap-item{
+    margin-left: 5px;
+}
+.bold-p{
+    font-weight: bold;
+    color: #22323F;
+}
+.img-introduce{
+    margin: 0 auto;
+    display: block;
+    max-height: 200px;
+    box-shadow:0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23)
+}
+.vertical-align
+    {display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+.list-chap
+{margin-top:5px}
+@media (max-width:767px){
+    .row.vertical-align
+    {display:block}
+    .note.note-success
+        {margin-bottom:0}}

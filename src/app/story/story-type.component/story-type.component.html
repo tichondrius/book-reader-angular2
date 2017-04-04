@@ -1,0 +1,49 @@
+        <loading-bar *ngIf='!(type)'></loading-bar>
+        
+        <div *ngIf='type'>
+            <h1 class="page-title"><i class="fa fa-area-chart"></i> Thể loại truyện {{type.name}} </h1>
+            <!-- END PAGE HEADER-->
+            <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <i class="icon-home"></i>
+                                <a>Home</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>     
+                                <a>Thể loại</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>
+                                <i class="fa fa-book" aria-hidden="true"></i>
+                                <a>{{type.name}}</a>
+                            </li>
+                           
+                        </ul>  
+            </div>
+            <div>
+                 <span *ngFor='let cat of type.categories' 
+                                [routerLink] ="['/categories', cat._id]" 
+                                class="tag label label-success tag-type pointer-hover">
+                                <i class="fa fa-tags" aria-hidden="true"></i> {{cat.name}} 
+                  </span>
+            </div>
+             <div *ngIf="type.categories.length == 0" class="note note-danger">
+                      Chưa có truyện nào liên quan tới thể loại này
+                 </div>
+
+            <br>
+             <div class="note note-success">
+                 Muốn xem tất cả các chap của truyện chọn ở trên nhé, ở dưới là các chap liên quan tới thể loại {{type.name}} ^^!
+             </div>
+             <div *ngIf="!(type && lstStories.length)" class="note note-danger">
+                            Chưa có chap truyện nào liên quan tới thể loại này
+             </div>
+            <div class="row">
+                        <div *ngFor='let story of lstStories'>
+                                <story-box [story]='story'></story-box>
+                        </div>
+                        
+            </div>
+           
+        </div>
