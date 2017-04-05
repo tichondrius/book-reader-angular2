@@ -5,5 +5,10 @@ export interface IPostStoryModel{
     img_pre: string,
     text_pre: string,
     type: number,
-    img_main: any[]
+    content: string,
+    img_main: any[],
+    typeupload: number,
+    file_pre: any,
+    file_main: any[]
+
 }

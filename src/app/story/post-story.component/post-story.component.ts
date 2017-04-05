@@ -11,6 +11,7 @@ import {IPostStoryModel} from './poststory'
     styleUrls: ['./post-story.component.css']
 })
 export class PostStoryComponent implements OnInit{
+    
     public success: boolean = false;
     public waitRequest: boolean = false;
     public categories: ICategory[];
@@ -21,7 +22,11 @@ export class PostStoryComponent implements OnInit{
         img_pre :'',
         part: 0,
         text_pre: '',
-        type: 0
+        type: 1,
+        content: '',
+        typeupload: 1,
+        file_main: undefined,
+        file_pre: undefined
     };
     public messages: string[];
     constructor(private categoryService: CategoryService, private storyService: StoryService){
@@ -29,7 +34,7 @@ export class PostStoryComponent implements OnInit{
     }
     ngOnInit(): void{
         var type: number = 1;
-        this.categoryService.getListByUser(type).subscribe(
+        this.categoryService.getListByUser().subscribe(
             categories => this.categories = categories,
             err => {
                 console.log(err);
@@ -47,8 +52,10 @@ export class PostStoryComponent implements OnInit{
             let cat = this.categories.find(h => h._id == value);
             if (cat){
                 this.model.part = cat.totalchap + 1;
-                
+                this.model.type = cat.type;
+                console.log(this.model.type);
             }
+
         }
         else
         {
@@ -70,7 +77,11 @@ export class PostStoryComponent implements OnInit{
                 img_pre :'',
                 part: 0,
                 text_pre: '',
-                type: 0
+                type: 1,
+                content: '',
+                typeupload: 1,
+                file_main: undefined,
+                file_pre: undefined
             };
                 setTimeout(() => {
                     this.success = false;
@@ -80,6 +91,9 @@ export class PostStoryComponent implements OnInit{
                 this.messages = error.lstMessErr
                 this.waitRequest = false;
             });
+    }
+    changeTypeUpload(type: number): void{
+        this.model.typeupload = type;
     }
     regexHtml(link: string): boolean{
         var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;

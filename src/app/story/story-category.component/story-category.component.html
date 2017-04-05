@@ -34,7 +34,10 @@
                       <div class="note note-success">
                             <p><span class="bold-p">Tác giả:</span> {{category.author}}</p>
                             <p><span class="bold-p">Người đăng:</span> {{category.postby.name}}
-                            <p><span class="bold-p">Giới thiệu truyện:</span> {{category.introduce}}</p>
+                            <p><span class="bold-p">Giới thiệu truyện:</span> {{category.introduce|truncate:enableTruncate:ntruncate}} 
+                            <a *ngIf='enableTruncate && category.introduce.length > ntruncate' (click)='clickMore()'>Xem thêm</a>
+                            <a *ngIf='!enableTruncate && category.introduce.length > ntruncate'(click)='clickHide()'>Rút gọn</a>
+                            </p>
                       </div>
                 </div>
                 <div class="col-md-6 col-lg-6 vcenter">

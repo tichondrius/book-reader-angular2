@@ -12,5 +12,6 @@ export interface IStory{
     date: Date,
     img_pre: string,
     text_pre: string,
+    content: string,
     img_main: IImage[]
 }

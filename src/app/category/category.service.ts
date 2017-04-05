@@ -23,10 +23,19 @@ export class CategoryService{
             .catch(this.handleError);
     }
 
-    getListByUser(type: number): Observable<ICategory[]>{
-        return this._httpauth.get(`${this._hostApi}categories/getbyuser?type=${type}`)
+    getListByUser(type: number = undefined): Observable<ICategory[]>{
+        if (type == undefined){
+             return this._httpauth.get(`${this._hostApi}categories/getbyuser`)
             .map((response: Response) => <ICategory[]> response.json())
             .catch(this.handleError);
+        }
+        else
+        {
+             return this._httpauth.get(`${this._hostApi}categories/getbyuser?type=${type}`)
+            .map((response: Response) => <ICategory[]> response.json())
+            .catch(this.handleError);
+        }
+       
     }
     getListForNav(): Observable<ICategory[]>{
         return this._http.get(this._hostApi + 'categories/fornav')

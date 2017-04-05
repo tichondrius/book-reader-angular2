@@ -14,6 +14,8 @@ import {CategoryService} from '../../category/category.service'
 })
 export class StoryCategoryComponent implements OnInit {
     subscription: Subscription;
+    public ntruncate: number = 150;
+    public enableTruncate: boolean = true;
     public urlImg = AppConfig.urlImg;
     public lstStories: IStory[];
     public catID: string;
@@ -40,6 +42,12 @@ export class StoryCategoryComponent implements OnInit {
     }
     ngOnDestroy() {
         this.subscription.unsubscribe();
+    }
+    clickMore(): void{
+        this.enableTruncate = false;
+    }
+    clickHide(): void{
+        this.enableTruncate = true;
     }
 
 }
