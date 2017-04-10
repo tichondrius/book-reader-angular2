@@ -1,5 +1,11 @@
 .chap-item{
     margin-left: 5px;
+    min-width: 75px;
+    margin-top: 5px;
+}
+.dropdown-title{
+    color: #3598dc!important;
+    font-weight: bold;
 }
 .bold-p{
     font-weight: bold;
@@ -14,7 +20,8 @@
 .vertical-align
     {display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .list-chap
-{margin-top:5px}
+{margin-top:5px;
+}
 @media (max-width:767px){
     .row.vertical-align
     {display:block}

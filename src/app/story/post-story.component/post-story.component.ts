@@ -62,10 +62,17 @@ export class PostStoryComponent implements OnInit{
             this.model.part = 0;
         }
     }
+    onChangeFile(file: any){
+        this.model.file_pre = file[0];
+    }
+    onChangeFiles(files: any){
+        this.model.file_main = files;
+    }
     onSubmit(): void{
         this.waitRequest = true;
         this.success = false;
         this.messages = [];
+        console.log(this.model);
         this.storyService.saveStory(this.model)
             .subscribe(response => {
                 this.success = true;

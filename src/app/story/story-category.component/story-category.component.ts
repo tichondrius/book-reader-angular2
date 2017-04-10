@@ -20,10 +20,15 @@ export class StoryCategoryComponent implements OnInit {
     public lstStories: IStory[];
     public catID: string;
     public category: ICategory;
+    public lstChaps: IStory[];
+    public collapse = false;
     constructor(private _storyService: StoryService,
                 private route: ActivatedRoute,
                 private _categoryService: CategoryService){
 
+    }
+    collapseChaps():void{
+        this.collapse = !this.collapse;
     }
     ngOnInit(): void{
         this.subscription = this.route.params.subscribe(params => {
@@ -32,10 +37,14 @@ export class StoryCategoryComponent implements OnInit {
             this.catID = params['catID'];
             //get story by category id
             this._storyService.getStoryByCategoryID(this.catID)
-                .subscribe(stories => this.lstStories = stories);
+                .subscribe(stories => {this.lstStories = stories});
             //get category info by category id
             this._categoryService.getCategoryById(this.catID)
-                .subscribe(category => this.category = category);
+                .subscribe(category => {
+                    this.category = category;
+                    this.lstChaps = category.stories;
+                    console.log(this.lstChaps);
+                });
         
         });
         

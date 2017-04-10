@@ -34,7 +34,14 @@ export class StoryService{
             .catch(this.handleError);
     }
     saveStory(model: IPostStoryModel): Observable<Response>{
-        return this.httpClient.put(`${this._hostApi}stories`, model)
+        var formData = new FormData();
+        formData.append('file_pre', model.file_pre);
+        formData.append('file_main', model.file_main);
+        formData.append('model', JSON.stringify(model));
+
+
+
+        return this.httpClient.putData(`${this._hostApi}stories`, formData)
             .map((response: Response) => response)
             .catch(this.handleError);
     }
