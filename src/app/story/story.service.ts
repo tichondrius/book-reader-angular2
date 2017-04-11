@@ -17,8 +17,15 @@ export class StoryService{
         this._hostApi = AppConfig.hostApi;
         
     }
-    getListStoryForHome(): Observable<IStory[]>{
-        return this._http.get(this._hostApi + 'stories/')
+    getListStoryForHome(order: string, orderby: string): Observable<IStory[]>{
+        console.log(this._hostApi + `stories?order=${order}&orderby=${orderby}`);
+        return this._http.get(this._hostApi + `stories?order=${order}&orderby=${orderby}`)
+            .map((response: Response) => <IStory[]> response.json())
+            .catch(this.handleError);
+    }
+    getMoreStoryForHome(order: string, orderby: string, offset: number): Observable<IStory[]>{
+        console.log(this._hostApi + `stories?order=${order}&orderby=${orderby}&skip=${offset}`);
+        return this._http.get(this._hostApi + `stories?order=${order}&orderby=${orderby}&skip=${offset}`)
             .map((response: Response) => <IStory[]> response.json())
             .catch(this.handleError);
     }

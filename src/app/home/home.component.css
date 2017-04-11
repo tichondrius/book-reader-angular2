@@ -1,0 +1,8 @@
+@media (max-width:767px){
+    #btnMore{
+        width: auto !important;
+    }
+}
+#btnMore{
+    width: 600px;
+}

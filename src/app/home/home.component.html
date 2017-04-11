@@ -1,10 +1,54 @@
-﻿
+﻿           
             <div>
                 <h1 class="page-title"><i class="fa fa-area-chart"></i> Trang chủ <small>Cùng đọc truyện nào</small></h1>
+                 <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <i class="icon-home"></i>
+                                <a>Home</a>
+                            </li>
+                        </ul>  
+                        <div class="page-toolbar">
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true" aria-expanded="false">{{order.name}}
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                    <li>
+                                        <a  (click)='onChangeOrder(i)' *ngFor='let i of orders' href="#" [ngClass] = "{'active-nav':order==i}">
+                                            <i class="icon-bag"></i> {{i.name}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="page-toolbar">
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true" aria-expanded="false">{{orderby.name}}
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                    <li>
+                                        <a (click)='onChangeOrderby(i)' *ngFor='let i of ordersby' href="#" [ngClass] = "{'active-nav':orderby==i}">
+                                            <i class="icon-bag"></i> {{i.name}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
                 <div class="row" *ngIf='lstStories'>
                     <div *ngFor='let story of lstStories'>
                             <story-box [story]='story'></story-box>     
                     </div>
+                      
                 </div>
+                <div class="row"  *ngIf='lstStories'>
+                    <div class="col-lg-12" style="text-align:center">
+                        <button *ngIf='IsHaveStory==true' (click)='getMoreStories()' id="btnMore" class="btn btn-lg green"> <span *ngIf='!IsLoadingMore'>Xem thêm <i class="fa fa-plus"></i></span><i *ngIf='IsLoadingMore' class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i></button>
+                    </div>
+                </div>
+                
+                
+                
             </div>
+            
             <loading-bar *ngIf='(!lstStories)'></loading-bar>
