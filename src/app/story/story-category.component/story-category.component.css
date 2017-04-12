@@ -11,6 +11,9 @@
     font-weight: bold;
     color: #22323F;
 }
+.chap-short{
+    margin-top:5px;
+}
 .img-introduce{
     margin: 0 auto;
     display: block;

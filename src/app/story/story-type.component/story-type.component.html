@@ -25,7 +25,7 @@
                  <span *ngFor='let cat of type.categories' 
                                 [routerLink] ="['/categories', cat._id]" 
                                 class="tag label label-success tag-type pointer-hover">
-                                <i class="fa fa-tags" aria-hidden="true"></i> {{cat.name}} 
+                                <i class="fa fa-book" aria-hidden="true"></i> {{cat.name}} 
                   </span>
             </div>
              <div *ngIf="type.categories.length == 0" class="note note-danger">

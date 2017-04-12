@@ -9,6 +9,6 @@ export interface IPostStoryModel{
     img_main: any[],
     typeupload: number,
     file_pre: any,
-    file_main: any[]
+    file_main: Array<File>
 
 }

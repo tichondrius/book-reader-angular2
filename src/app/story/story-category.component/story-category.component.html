@@ -21,7 +21,7 @@
                            
                         </ul>  
             </div>
-            <div>
+            <div *ngIf='category'>
                  <span *ngFor='let type of category.types' 
                                 [routerLink] ="['/types', type._id]" 
                                 class="tag label label-success tag-type pointer-hover">
@@ -48,7 +48,7 @@
             <div class="note note-danger list-chap" *ngIf='lstStories.length == 0'>
                      Truyện chưa có chap nào !      
             </div>
-            <div class="row list-chap">
+            <div class="row list-chap" *ngIf='lstChaps && lstChaps.length'>
                 <div class="col-lg-12">
                           <div class="panel-group">
                             <div class="panel panel-default">
@@ -58,7 +58,7 @@
                                         Ẩn hiện danh sách chap
                                         
                                          <i [ngClass]="{'fa-chevron-left': !collapse, 'fa-chevron-down': collapse}" class="fa "></i></a>
-                                    <div><a [routerLink]="['/stories', lstChaps[lstChaps.length - 1]._id]"><small class="font-green">Chap đầu</small></a> | <a [routerLink]="['/stories', lstChaps[0]._id]"><small class="font-green">Chap cuối#{{lstChaps[0].part}}</small></a></div>
+                                    <div class="chap-short"><a [routerLink]="['/stories', lstChaps[lstChaps.length - 1]._id]"><small class="font-green">Chap đầu</small></a> | <a [routerLink]="['/stories', lstChaps[0]._id]"><small class="font-green">Chap cuối#{{lstChaps[0].part}}</small></a></div>
                                 </h4>
                                 </div>
                                 <div id="collapse1" class="panel-collapse collapse">

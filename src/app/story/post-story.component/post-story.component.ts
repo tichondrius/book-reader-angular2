@@ -25,7 +25,7 @@ export class PostStoryComponent implements OnInit{
         type: 1,
         content: '',
         typeupload: 1,
-        file_main: undefined,
+        file_main: [],
         file_pre: undefined
     };
     public messages: string[];
@@ -63,7 +63,7 @@ export class PostStoryComponent implements OnInit{
         }
     }
     onChangeFile(file: any){
-        this.model.file_pre = file[0];
+        this.model.file_pre = <Array<File>>file[0];
     }
     onChangeFiles(files: any){
         this.model.file_main = files;
@@ -87,7 +87,7 @@ export class PostStoryComponent implements OnInit{
                 type: 1,
                 content: '',
                 typeupload: 1,
-                file_main: undefined,
+                file_main: [],
                 file_pre: undefined
             };
                 setTimeout(() => {
@@ -95,7 +95,8 @@ export class PostStoryComponent implements OnInit{
                 }, 2000);
             },
             error => {
-                this.messages = error.lstMessErr
+                this.messages = error.map(err => err.errorMess)
+                console.log(error);
                 this.waitRequest = false;
             });
     }
