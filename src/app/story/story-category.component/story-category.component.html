@@ -29,50 +29,58 @@
                   </span>
             </div>
             <br>
-            <div class="row vertical-align">
-                <div class="col-md-6 col-lg-6 vcenter">
-                      <div class="note note-success">
-                            <p><span class="bold-p">Tác giả:</span> {{category.author}}</p>
-                            <p><span class="bold-p">Người đăng:</span> {{category.postby.name}}
-                            <p><span class="bold-p">Giới thiệu truyện:</span> {{category.introduce|truncate:enableTruncate:ntruncate}} 
-                            <a *ngIf='enableTruncate && category.introduce.length > ntruncate' (click)='clickMore()'>Xem thêm</a>
-                            <a *ngIf='!enableTruncate && category.introduce.length > ntruncate'(click)='clickHide()'>Rút gọn</a>
-                            </p>
-                      </div>
-                </div>
-                <div class="col-md-6 col-lg-6 vcenter">
-                    <img class="img-responsive img-introduce" src="{{category.img |urlImg}}">
-                </div>
-            </div>
            
-            <div class="note note-danger list-chap" *ngIf='lstStories.length == 0'>
-                     Truyện chưa có chap nào !      
-            </div>
-            <div class="row list-chap" *ngIf='lstChaps && lstChaps.length'>
-                <div class="col-lg-12">
-                          <div class="panel-group">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="dropdown-title" (click)='collapseChaps()' data-toggle="collapse" href="#collapse1">
-                                        Ẩn hiện danh sách chap
-                                        
-                                         <i [ngClass]="{'fa-chevron-left': !collapse, 'fa-chevron-down': collapse}" class="fa "></i></a>
-                                    <div class="chap-short"><a [routerLink]="['/stories', lstChaps[lstChaps.length - 1]._id]"><small class="font-green">Chap đầu</small></a> | <a [routerLink]="['/stories', lstChaps[0]._id]"><small class="font-green">Chap cuối#{{lstChaps[0].part}}</small></a></div>
-                                </h4>
-                                </div>
-                                <div id="collapse1" class="panel-collapse collapse">
-                                <div class="panel-body"> <div>
-                                                    <a *ngFor='let story of lstChaps' [routerLink] = "['/stories', story._id]" class = 'btn btn-success btn-sm chap-item'>Chap {{story.part}}</a>
+            <div class="mt-element-list">
+                                       
+                                        <div class="mt-list-container list-simple ext-1 group">
+                                            <a class="list-toggle-container" data-toggle="collapse" href="#completed-simple" aria-expanded="true">
+                                                <div class="list-toggle done uppercase" id="toggle-info"> Thông tin
+                                                   
                                                 </div>
+                                            </a>
+                                            <div class="panel-collapse collapse in" id="completed-simple" aria-expanded="true">
+                                                <div class="row vertical-align">
+                                                    <div class="col-md-6 col-lg-6 vcenter">
+                                                        <div class="note note-success">
+                                                                <p><span class="bold-p">Tác giả:</span> {{category.author}}</p>
+                                                                <p><span class="bold-p">Người đăng:</span> {{category.postby.name}}
+                                                                <p><span class="bold-p">Giới thiệu truyện:</span> {{category.introduce|truncate:enableTruncate:ntruncate}} 
+                                                                <a *ngIf='enableTruncate && category.introduce.length > ntruncate' (click)='clickMore()'>Xem thêm</a>
+                                                                <a *ngIf='!enableTruncate && category.introduce.length > ntruncate'(click)='clickHide()'>Rút gọn</a>
+                                                                </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-lg-6 vcenter">
+                                                        <img class="img-responsive img-introduce" src="{{category.img |urlImg}}">
+                                                    </div>
                                                 </div>
-                                <div class="panel-footer"><small>Số lượng chap: {{lstChaps.length}}</small></div>
-                                </div>
-                            </div>
-                            </div>
-                      
-                </div>
-            </div>
+                                                
+                                            </div>
+                                            <a class="list-toggle-container collapsed" data-toggle="collapse" href="#pending-simple" aria-expanded="false">
+                                                <div class="list-toggle uppercase" > Danh sách chap
+                                                    <span *ngIf='lstChaps' class="badge badge-default pull-right bg-white font-dark bold">{{lstChaps.length}}</span>
+                                                </div>
+                                            </a>
+                                            <div class="panel-collapse collapse" id="pending-simple" aria-expanded="false" style="height: 0px;">
+                                                <div *ngIf='lstStories.length'>
+                                                    <div class="panel-body"> 
+                                                          <div class="chap-short">
+                                                              <a [routerLink]="['/stories', lstChaps[lstChaps.length - 1]._id]">
+                                                                <small class="font-green">Chap đầu</small></a> | <a [routerLink]="['/stories', lstChaps[0]._id]"><small class="font-green">Chap cuối#{{lstChaps[0].part}}
+                                                                </small>
+                                                              </a>
+                                                         </div>
+                                                        <div>
+                                                        <a *ngFor='let story of lstChaps' [routerLink] = "['/stories', story._id]" class = 'btn btn-success btn-sm chap-item'>Chap {{story.part}}</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    <div class="note note-danger list-chap" *ngIf='lstStories.length == 0'>
+                                                        Truyện chưa có chap nào !      
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
             <br/>
             <div class="row">
                         <div *ngFor='let story of lstStories'>
