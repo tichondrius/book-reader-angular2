@@ -10,7 +10,6 @@
                                 <i class="fa fa-angle-right"></i>
                             </li>
                             <li>
-                                
                                 <a>Truyện</a>
                                 <i class="fa fa-angle-right"></i>
                             </li>
@@ -41,18 +40,29 @@
             <div>
                 
             <!-- END PAGE HEADER-->
-            <div class="row">
+            <div class="row" *ngIf='story && story.cat.type == 1'>
                 <div class="col-sm-3">
                 </div>
                 <div class="col-sm-6">
                      
-                    <div *ngIf='story'>
+                    <div>
                         <div *ngFor='let img of story.img_main'>
                             <img class='img-main'  src='{{img.url | urlImg}}'/>
-                        </div>
-                        
+                        </div> 
+                    </div>
+                    
+                </div>
+                <div class="col-sm-2">
+                </div>
+            </div>
+            <div class="row" *ngIf='story && story.cat.type == 2'>
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-8">
+                    <div>
+                        <story-content [content]='story.content'></story-content>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                 </div>
             </div>

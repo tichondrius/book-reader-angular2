@@ -2,9 +2,9 @@ import {Component, OnChanges, Input, Output, EventEmitter} from '@angular/core'
 
 import  {Router} from '@angular/router'
 import {OnInit} from '@angular/core'
-import {IStory} from './story'
-import {StoryService} from './story.service'
-import {AppConfig} from '../codes/secrect'
+import {IStory} from '../story'
+import {StoryService} from '../story.service'
+import {AppConfig} from '../../codes/secrect'
 
 
 @Component({

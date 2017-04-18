@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { AppConfig } from '../codes/secrect'
+import { AppConfig } from '../../codes/secrect'
 import {ActivatedRoute, Router} from '@angular/router'
 import {OnInit} from '@angular/core'
-import {IStory} from './story'
-import {StoryService} from './story.service'
+import {IStory} from '../story'
+import {StoryService} from '../story.service'
 
 @Component({
     templateUrl: './story-detail.component.html',

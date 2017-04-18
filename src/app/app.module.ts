@@ -7,8 +7,8 @@ import {SharedModule} from './shared/shared.module'
 
 import { AppComponent }  from './app.component';
 import {HomeComponent} from './home/home.component'
-import {StoryBoxComponent} from './story/story-box.component'
-import {StoryDetailComponent} from './story/story-detail.component'
+import {StoryBoxComponent} from './story/story-box.component/story-box.component'
+import {StoryDetailComponent} from './story/story-detail.component/story-detail.component'
 import {LoginInfoComponent} from './navbar/login-info.component'
 import {LoginComponent} from './auth/login.component/login.component'
 import {NavBarTopComponent} from './navbar/nav-bar-top.component'
@@ -23,8 +23,10 @@ import {PostStoryComponent} from './story/post-story.component/post-story.compon
 import {CategoryListComponent} from './category/category-list.component/category-list.component'
 import {CategoryBoxComponent} from './category/category-box.component/category-box.component'
 import {PostCategoryComponent} from './category/post-category.component/post-category.component'
+import {StoryContentComponent} from './story/story-detail.component/story-content.component/story-content.component'
 
-import {ListStoryFilter} from './story/story-box-filter.pipe'
+
+import {ListStoryFilter} from './story/story-box.component/story-box-filter.pipe'
 import {DateFilter} from './story/date-iso-filter.pipe'
 import {ImageFilter} from './story/image-url.pipe'
 import {StoryService} from './story/story.service'
@@ -76,7 +78,8 @@ import {AuthenGuard, UnAuthenGuard} from './auth/guards/authen-guard'
     CategoryListComponent,
     PostCategoryComponent,
     CategoryBoxComponent,
-    TruncatePipe
+    TruncatePipe,
+    StoryContentComponent
    ],
   providers: [StoryService, CategoryService, TypeService,
    AuthService, UnAuthenGuard, AuthenGuard,

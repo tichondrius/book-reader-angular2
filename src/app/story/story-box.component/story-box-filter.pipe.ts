@@ -1,5 +1,5 @@
 import {PipeTransform, Pipe} from '@angular/core'
-import {IStory} from './story'
+import {IStory} from '../story'
 @Pipe({
     name: 'listStory'
 })
