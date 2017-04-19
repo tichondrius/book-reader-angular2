@@ -6,7 +6,7 @@
                                         <span style="cursor: pointer" [routerLink] = "['/stories', story._id]" class="caption-subject font-green bold uppercase">{{story.name |truncate:true:17}} #{{story.part}}</span>
                                         <div class="caption-desc font-grey-cascade">
                                                             <div>
-                                                            <span class="tag label label-success pointer-hover" [routerLink] ="['/categories', story.cat._id]">{{story.cat.name}}</span>
+                                                            <span class="tag label label-success pointer-hover" [routerLink] ="['/categories', story.cat._id]"><i class="fa fa-book" aria-hidden="true"></i> {{story.cat.name|truncate:true:15}}</span>
                                                             <span class="tag label label-info">{{story.date | dateShort}}</span>
                                                             </div>
                                                              {{story.text_pre | truncate:true:35}}</div>

@@ -15,7 +15,7 @@
                             </li>
                             <li>
                                 <i class="fa fa-book" aria-hidden="true"></i>
-                                <a [routerLink] ="['/categories', story.cat._id]">{{story.cat.name}}</a>
+                                <a [routerLink] ="['/categories', story.cat._id]">{{story.cat.name|truncate:true:15}}</a>
                                 <i class="fa fa-angle-right"></i>
                             </li>
                             <li>
@@ -26,14 +26,14 @@
                     </div>
 
              <div>
-                     <span [routerLink] ="['/categories', story.cat._id]" class="tag label label-success pointer-hover"><i class="fa fa-book" aria-hidden="true"></i> {{story.cat.name}}</span>
+                     <span [routerLink] ="['/categories', story.cat._id]" class="tag label label-success pointer-hover"><i class="fa fa-book" aria-hidden="true"></i> {{story.cat.name|truncate:true:15}}</span>
                      <span class="tag label label-info pointer-hover" >{{story.date | dateShort}} <i class="fa fa-clock-o" aria-hidden="true"></i> </span>
                      <br/><br/>
                     <span  *ngFor='let type of story.cat.types' [routerLink] ="['/types', type._id]" class="tag label label-success tag-type pointer-hover"><i class="fa fa-tags" aria-hidden="true"></i> {{type.name}} </span>
                 </div>
                
                 <br/>
-                 <div class="note note-success">
+                 <div *ngIf="story.text_pre && story.text_pre != ''" class="note note-success">
                               
                       <p>{{story.text_pre}}</p>
                  </div>
