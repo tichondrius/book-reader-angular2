@@ -12,6 +12,7 @@ interface ICategory{
     totalchap: number,
     postby: IUser,
     introduce: string,
-    types: IType[]
+    types: IType[],
+    dateUpload: Date
 }
 export default ICategory;

@@ -22,7 +22,17 @@ export class CategoryService{
             .map((response: Response) => <ICategory[]> response.json())
             .catch(this.handleError);
     }
+    getListForHome(order: string, orderby: string):  Observable<ICategory[]>{
+         return this._http.get(this._hostApi + `categories?order=${order}&orderby=${orderby}`)
+            .map((response: Response) => <ICategory[]> response.json())
+            .catch(this.handleError);
+    }
+    getMoreForHome(order: string, orderby: string, offset: number): Observable<ICategory[]>{
 
+         return this._http.get(this._hostApi + `categories?order=${order}&orderby=${orderby}&skip=${offset}`)
+            .map((response: Response) => <ICategory[]> response.json())
+            .catch(this.handleError);
+    }
     getListByUser(type: number = undefined): Observable<ICategory[]>{
         if (type == undefined){
              return this._httpauth.get(`${this._hostApi}categories/getbyuser`)

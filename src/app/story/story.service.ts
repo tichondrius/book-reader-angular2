@@ -18,14 +18,13 @@ export class StoryService{
         
     }
     getListStoryForHome(order: string, orderby: string): Observable<IStory[]>{
-        console.log(this._hostApi + `stories?order=${order}&orderby=${orderby}`);
-        return this._http.get(this._hostApi + `stories?order=${order}&orderby=${orderby}`)
+        return this._http.get(this._hostApi + `stories?order=${order}&orderby=${orderby}&type=1`)
             .map((response: Response) => <IStory[]> response.json())
             .catch(this.handleError);
     }
     getMoreStoryForHome(order: string, orderby: string, offset: number): Observable<IStory[]>{
-        console.log(this._hostApi + `stories?order=${order}&orderby=${orderby}&skip=${offset}`);
-        return this._http.get(this._hostApi + `stories?order=${order}&orderby=${orderby}&skip=${offset}`)
+
+        return this._http.get(this._hostApi + `stories?order=${order}&orderby=${orderby}&skip=${offset}&type=1`)
             .map((response: Response) => <IStory[]> response.json())
             .catch(this.handleError);
     }

@@ -3,17 +3,17 @@
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class=" icon-layers font-green"></i>
-                                        <span style="cursor: pointer" [routerLink] = "['/categories', category._id]" class="caption-subject font-green bold uppercase">{{category.name}} </span>
+                                        <span style="cursor: pointer" [routerLink] = "['/categories', category._id]" class="caption-subject font-green bold uppercase">{{category.name|truncate:true:25}} </span>
                                         <div class="caption-desc font-grey-cascade">
                                                             <div>
                                                             <span class="tag label label-success pointer-hover" [routerLink] ="">Số chap: {{category.totalchap}}</span>
                                                             <span class="tag label label-info">{{category.postby.name}}</span>
                                                             </div>
-                                                             Giới thiệu: {{category.introduce | truncate:100}}<br>
+                                                             Giới thiệu: {{category.introduce | truncate:true:75}}<br>
                                                              
                                                              </div>
                                          <div class="caption-desc font-grey-cascade detail-param" *ngIf='category.stories.length'>
-                                             Chap mới nhất: <span class="tag label label-success pointer-hover" [routerLink] ="['/stories', category.stories[0]._id]">{{category.stories[0].name}} #{{category.stories[0].part}}</span>
+                                             Chap mới nhất: <span class="tag label label-success pointer-hover" [routerLink] ="['/stories', category.stories[0]._id]">{{category.stories[0].name | truncate:true:15}} #{{category.stories[0].part}}</span>
                                          </div>
                                           <div class="caption-desc font-grey-cascade detail-param" *ngIf='!category.stories.length'>
                                              Chap mới nhất: <span class="tag label label-success pointer-hover"> Chưa có</span>

@@ -24,8 +24,8 @@ import {CategoryListComponent} from './category/category-list.component/category
 import {CategoryBoxComponent} from './category/category-box.component/category-box.component'
 import {PostCategoryComponent} from './category/post-category.component/post-category.component'
 import {StoryContentComponent} from './story/story-detail.component/story-content.component/story-content.component'
-
-
+import {NewStoryImageComponent} from './story/newstoryimage.component/newstoryimage.component'
+import {NewCatListComponent} from './category/newcategory.component/newcategory.component'
 import {ListStoryFilter} from './story/story-box.component/story-box-filter.pipe'
 import {DateFilter} from './story/date-iso-filter.pipe'
 import {ImageFilter} from './story/image-url.pipe'
@@ -79,7 +79,9 @@ import {AuthenGuard, UnAuthenGuard} from './auth/guards/authen-guard'
     PostCategoryComponent,
     CategoryBoxComponent,
     TruncatePipe,
-    StoryContentComponent
+    StoryContentComponent,
+    NewStoryImageComponent,
+    NewCatListComponent
    ],
   providers: [StoryService, CategoryService, TypeService,
    AuthService, UnAuthenGuard, AuthenGuard,

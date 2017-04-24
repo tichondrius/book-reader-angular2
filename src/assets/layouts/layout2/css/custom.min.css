@@ -13,6 +13,9 @@
 .text-pre{
     padding: 20px;
 }
+.btn-loadmore{
+    margin-bottom: 20px;
+}
 .active-nav{
     color: #FAFCFB !important;
     background-color: #8da0ad !important;

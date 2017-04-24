@@ -10,53 +10,15 @@ import {StoryService} from '../story/story.service'
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    public urlImg = AppConfig.urlImg;
-    public lstStories: IStory[];
-    public pageTitle: string = 'TruyenNham.vn';
-    public IsHaveStory: boolean = true;
-    public IsLoadingMore: boolean = false;
-    public orders: any = [
-        {name: 'Theo ngày', value: "date"},
-        {name: 'Theo tên', value: 'name'},
-        {name: 'Theo chap', value: 'part'}
-    ];
-    public ordersby: any = [
-        {name: 'Tăng', value: "asc"},
-        {name: 'Giảm', value: 'desc'},
-    ]
-    public orderby: any = this.ordersby[1];
-    public order: any = this.orders[0];
-    constructor(private _storyService: StoryService){
+    isLoadStoryDone: boolean = false;
+    isLoadCatDone: boolean = false;
+    ngOnInit(): void{
 
     }
-    ngOnInit(): void{
-        this.loadData();
+    loadStoryDone(rs: boolean){
+        this.isLoadStoryDone = rs;
     }
-    loadData(): void{
-        this.lstStories = undefined;
-        this._storyService.getListStoryForHome(this.order.value, this.orderby.value).subscribe(stories => {
-            this.lstStories = stories;
-        })
-    }
-    onChangeOrder(i: any): void{
-        this.order = i;
-        this.loadData();
-    }
-    onChangeOrderby(i: any): void{
-        this.orderby = i;
-        this.loadData();
-    }
-    getMoreStories(): void{
-        this.IsLoadingMore = true;
-        this._storyService.getMoreStoryForHome(this.order.value,
-        this.orderby.value, 
-        this.lstStories.length).subscribe(stories => {
-            if (stories.length == 0)
-            {
-                this.IsHaveStory = false;
-            }
-            else this.lstStories = this.lstStories.concat(stories);
-            this.IsLoadingMore = false;
-        })
+    loadCatDone(rs: boolean){
+        this.isLoadCatDone = rs;
     }
 }

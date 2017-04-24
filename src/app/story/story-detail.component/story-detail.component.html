@@ -44,11 +44,18 @@
                 <div class="col-sm-3">
                 </div>
                 <div class="col-sm-6">
-                     
+                    <div class="nav-group">
+                        <button *ngIf='prevStory' [routerLink] ="['/stories', prevStory._id]"  class="btn-nav btn green" type="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Tập trước</button>
+                        <button *ngIf='nextStory' [routerLink] ="['/stories', nextStory._id]" class="btn-nav btn green pull-right" type="button">Tập kế <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                    </div>
                     <div>
                         <div *ngFor='let img of story.img_main'>
-                            <img class='img-main'  src='{{img.url | urlImg}}'/>
+                            <img class='img-main'  src='{{img.url | urlImg:1000}}'/>
                         </div> 
+                    </div>
+                     <div class="nav-group">
+                        <button *ngIf='prevStory' [routerLink] ="['/stories', prevStory._id]"  class="btn-nav btn green" type="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Tập trước</button>
+                        <button *ngIf='nextStory' [routerLink] ="['/stories', nextStory._id]" class="btn-nav btn green pull-right" type="button">Tập kế <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                     </div>
                     
                 </div>
@@ -59,8 +66,16 @@
                 <div class="col-sm-2">
                 </div>
                 <div class="col-sm-8">
+                    <div class="nav-group">
+                        <button *ngIf='prevStory' [routerLink] ="['/stories', prevStory._id]"  class="btn-nav btn green" type="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Tập trước</button>
+                        <button *ngIf='nextStory' [routerLink] ="['/stories', nextStory._id]" class="btn-nav btn green pull-right" type="button">Tập kế <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                    </div>
                     <div>
                         <story-content [content]='story.content'></story-content>
+                    </div>
+                    <div class="nav-group">
+                        <button *ngIf='prevStory' [routerLink] ="['/stories', prevStory._id]"  class="btn-nav btn green" type="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Tập trước</button>
+                        <button *ngIf='nextStory' [routerLink] ="['/stories', nextStory._id]" class="btn-nav btn green pull-right" type="button">Tập kế <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                     </div>
                 </div>
                 <div class="col-sm-2">
