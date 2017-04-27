@@ -1,4 +1,4 @@
-        <loading-bar *ngIf='!(type)'></loading-bar>
+       
         
         <div *ngIf='type'>
             <h1 class="page-title"><i class="fa fa-area-chart"></i> Thể loại truyện {{type.name}} </h1>
@@ -47,3 +47,5 @@
             </div>
            
         </div>
+
+         <loading-bar *ngIf='!(type)'></loading-bar>

@@ -17,14 +17,25 @@ export class StoryService{
         this._hostApi = AppConfig.hostApi;
         
     }
-    getListStoryForHome(order: string, orderby: string): Observable<IStory[]>{
-        return this._http.get(this._hostApi + `stories?order=${order}&orderby=${orderby}&type=1`)
+    getListStoryForHome(order: string, orderby: string, category? :string): Observable<IStory[]>{
+        if (category)
+        {
+             return this._http.get(this._hostApi + `stories?order=${order}&orderby=${orderby}&category=${category}`)
+            .map((response: Response) => <IStory[]> response.json())
+            .catch(this.handleError);
+        }
+        else return this._http.get(this._hostApi + `stories?order=${order}&orderby=${orderby}&type=1`)
             .map((response: Response) => <IStory[]> response.json())
             .catch(this.handleError);
     }
-    getMoreStoryForHome(order: string, orderby: string, offset: number): Observable<IStory[]>{
-
-        return this._http.get(this._hostApi + `stories?order=${order}&orderby=${orderby}&skip=${offset}&type=1`)
+    getMoreStoryForHome(order: string, orderby: string, offset: number, category?: ConstrainDOMStringParameters): Observable<IStory[]>{
+        if (category)
+        {
+             return this._http.get(this._hostApi + `stories?order=${order}&orderby=${orderby}&skip=${offset}&category=${category}`)
+            .map((response: Response) => <IStory[]> response.json())
+            .catch(this.handleError);
+        }
+        else return this._http.get(this._hostApi + `stories?order=${order}&orderby=${orderby}&skip=${offset}&type=1`)
             .map((response: Response) => <IStory[]> response.json())
             .catch(this.handleError);
     }

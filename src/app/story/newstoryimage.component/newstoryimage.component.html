@@ -4,47 +4,57 @@
                             <ul class="page-breadcrumb">
                                         <li>
                                             <i _ngcontent-c2="" class=" icon-layers font-green"></i>
-                                            <a class="font-green">Danh sách chap truyện tranh mới</a>
+                                            <a class="font-green">{{title}}</a>
                                         </li>
-                            </ul>     
-                            <div class="page-toolbar">
+                            </ul>
+                             <div *ngIf='IsLoadData' class="page-toolbar">
+                                <div class="btn-group pull-right">
+                                    <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true" aria-expanded="false"><i *ngIf='1' class="fa fa-circle-o-notch fa-spin" style="font-size:20px"></i>
+                                       
+                                    </button>
+                                </div>
+                            </div>         
+                            <div class="page-toolbar" *ngIf='!IsLoadData'>
                                 <div class="btn-group pull-right">
                                     <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true" aria-expanded="false">{{order.name}}
                                         <i class="fa fa-angle-down"></i>
                                     </button>
                                     <ul class="dropdown-menu pull-right" role="menu">
                                         <li>
-                                            <a  (click)='onChangeOrder(i)' *ngFor='let i of orders' href="#" [ngClass] = "{'active-nav':order==i}">
+                                            <a  (click)='onChangeOrder(i)' *ngFor='let i of orders'  [ngClass] = "{'active-nav':order==i}">
                                                 <i class="icon-bag"></i> {{i.name}}</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="page-toolbar">
+                            <div class="page-toolbar" *ngIf='!IsLoadData'>
                                 <div class="btn-group pull-right">
                                     <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true" aria-expanded="false">{{orderby.name}}
                                         <i class="fa fa-angle-down"></i>
                                     </button>
                                     <ul class="dropdown-menu pull-right" role="menu">
                                         <li>
-                                            <a (click)='onChangeOrderby(i)' *ngFor='let i of ordersby' href="#" [ngClass] = "{'active-nav':orderby==i}">
+                                            <a (click)='onChangeOrderby(i)' *ngFor='let i of ordersby' [ngClass] = "{'active-nav':orderby==i}">
                                                 <i class="icon-bag"></i> {{i.name}}</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                    </div>        
                     </div>
-                    <div *ngFor='let story of lstStories'>
-                            <story-box [story]='story'></story-box>     
-                    </div>
-                      
+                    <div *ngFor="let story of lstStories; let i = index">
+                            <div class="row" *ngIf='i % 3 == 0'>
+                                        <story-box *ngIf='lstStories[i + 0]' [story]='lstStories[i + 0]'></story-box>     
+                                        <story-box *ngIf='lstStories[i + 1]' [story]='lstStories[i + 1]'></story-box>   
+                                        <story-box *ngIf='lstStories[i + 2]' [story]='lstStories[i + 2]'></story-box>   
+                            </div>
+                    </div>                   
+                    </div>     
                 </div>
                 <div class="row"  *ngIf='lstStories'>
                     <div class="col-lg-3 col-md-2">
                     </div>
                     <div class="col-lg-6 col-md-8" style="text-align:center">
-                        <button [disabled]='IsLoadingMore' *ngIf='IsHaveStory==true' (click)='getMoreStories()'  class="btn btn-lg green btn-block btn-loadmore"> <span *ngIf='!IsLoadingMore'>Xem thêm <i class="fa fa-plus"></i></span><i *ngIf='IsLoadingMore' class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i></button>
+                        <button  [disabled]='IsLoadingMore' *ngIf='IsHaveStory==true' (click)='getMoreStories()'  class="btn btn-lg green btn-block btn-loadmore"> <span *ngIf='!IsLoadingMore'>Xem thêm <i class="fa fa-plus"></i></span><i *ngIf='IsLoadingMore' class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i></button>
                     </div>
                           <div class="col-lg-3 col-md-2">
                     </div>

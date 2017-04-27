@@ -9,8 +9,9 @@
                             </li>
                         </ul>  
                 </div>
-                <new-story-image (loadDone)='loadStoryDone($event)'></new-story-image>
-                <new-cat-list (loadDone)='loadCatDone($event)'></new-cat-list>
+				<new-cat-list [title]="'Danh sách các truyện mới cập nhật'" (loadDone)='loadCatDone($event)'></new-cat-list>
+                <new-story-image [title]="'Danh sách các chap truyện tranh mới'" [forceOrder]="'part'" [forceOrderby]="'desc'" (loadDone)='loadStoryDone($event)'></new-story-image>
+               
                 
             </div>
             

@@ -1,6 +1,6 @@
-        <loading-bar *ngIf='!(category && lstStories)'></loading-bar>
+       
         
-        <div *ngIf='category && lstStories'>
+        <div *ngIf='category'>
             <h1 class="page-title"><i class="fa fa-area-chart"></i> Truyện {{category.name}} <small>đăng bởi <a>{{category.postby.name}}</a></small></h1>
             <!-- END PAGE HEADER-->
             <div class="page-bar">
@@ -62,7 +62,7 @@
                                                 </div>
                                             </a>
                                             <div class="panel-collapse collapse" id="pending-simple" aria-expanded="false" style="height: 0px;">
-                                                <div *ngIf='lstStories.length'>
+                                                <div *ngIf='lstChaps.length'>
                                                     <div class="panel-body"> 
                                                           <div class="chap-short">
                                                               <a [routerLink]="['/stories', lstChaps[lstChaps.length - 1]._id]">
@@ -75,16 +75,15 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                    <div class="note note-danger list-chap" *ngIf='lstStories.length == 0'>
+                                                    <div class="note note-danger list-chap" *ngIf='lstChaps.length == 0'>
                                                         Truyện chưa có chap nào !      
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
             <br/>
-            <div class="row">
-                        <div *ngFor='let story of lstStories'>
-                                <story-box [story]='story'></story-box>
-                        </div>
-            </div>
+            <new-story-image [forceCategory]="catID" [forceOrder]="'part'" [forceOrderby]="'desc'" (loadDone)='loadStoryDone($event)'></new-story-image>
+        
+        
         </div>
+        <loading-bar *ngIf='!(category) || isLoadStoryDone == false'></loading-bar>

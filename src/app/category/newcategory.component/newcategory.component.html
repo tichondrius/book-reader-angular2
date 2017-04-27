@@ -3,11 +3,17 @@
                             <div class="page-bar" style="margin-bottom:0px;">
                             <ul class="page-breadcrumb">
                                         <li>
-                                            <i _ngcontent-c2="" class=" icon-layers font-green"></i>
-                                            <a class="font-green">Danh sách chap truyện tranh mới</a>
+                                            <h1  class="page-title font-green"><i class="fa fa-area-chart"></i> {{title}} </h1>
                                         </li>
-                            </ul>     
-                            <div class="page-toolbar">
+                            </ul>
+                            <div *ngIf='IsLoadData' class="page-toolbar">
+                                <div class="btn-group pull-right">
+                                    <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true" aria-expanded="false"><i *ngIf='1' class="fa fa-circle-o-notch fa-spin" style="font-size:20px"></i>
+                                       
+                                    </button>
+                                </div>
+                            </div>     
+                            <div class="page-toolbar" *ngIf='!IsLoadData'>
                                 <div class="btn-group pull-right">
                                     <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true" aria-expanded="false">{{order.name}}
                                         <i class="fa fa-angle-down"></i>
@@ -20,7 +26,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="page-toolbar">
+                            <div class="page-toolbar" *ngIf='!IsLoadData'>
                                 <div class="btn-group pull-right">
                                     <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true" aria-expanded="false">{{orderby.name}}
                                         <i class="fa fa-angle-down"></i>
@@ -33,12 +39,16 @@
                                     </ul>
                                 </div>
                             </div>
-                    </div>        
                     </div>
-                    <div *ngFor='let story of lstCategories'>
-                            <category-box [category]='story'></category-box>     
+                        <div *ngFor="let story of lstCategories; let i = index">
+                            <div class="row" *ngIf='i % 3 == 0'>
+                                        <category-box *ngIf='lstCategories[i + 0]' [category]='lstCategories[i + 0]'></category-box>     
+                                        <category-box *ngIf='lstCategories[i + 1]' [category]='lstCategories[i + 1]'></category-box>   
+                                        <category-box *ngIf='lstCategories[i + 2]' [category]='lstCategories[i + 2]'></category-box>   
+                            </div>
+                        </div>        
                     </div>
-                      
+                    
                 </div>
                 <div class="row"  *ngIf='lstCategories'>
                     <div class="col-lg-3 col-md-2">

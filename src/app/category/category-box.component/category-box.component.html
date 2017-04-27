@@ -6,10 +6,11 @@
                                         <span style="cursor: pointer" [routerLink] = "['/categories', category._id]" class="caption-subject font-green bold uppercase">{{category.name|truncate:true:25}} </span>
                                         <div class="caption-desc font-grey-cascade">
                                                             <div>
-                                                            <span class="tag label label-success pointer-hover" [routerLink] ="">Số chap: {{category.totalchap}}</span>
-                                                            <span class="tag label label-info">{{category.postby.name}}</span>
+                                                            <span class="tag label label-success pointer-hover tag-type" [routerLink] ="">Số chap: {{category.totalchap}}</span>
+                                                            <span *ngIf='category.type==1' class="tag label label-info">Truyện tranh</span>
+                                                            <span *ngIf='category.type==2' class="tag label label-info">Truyện chữ</span>
                                                             </div>
-                                                             Giới thiệu: {{category.introduce | truncate:true:75}}<br>
+                                                             Giới thiệu: {{category.introduce | truncate:true:30}}<br>
                                                              
                                                              </div>
                                          <div class="caption-desc font-grey-cascade detail-param" *ngIf='category.stories.length'>
@@ -17,7 +18,8 @@
                                          </div>
                                           <div class="caption-desc font-grey-cascade detail-param" *ngIf='!category.stories.length'>
                                              Chap mới nhất: <span class="tag label label-success pointer-hover"> Chưa có</span>
-                                         </div>                
+                                         </div>
+                                                        
                                     </div>
                                 </div>
                                 <div class="portlet-body">

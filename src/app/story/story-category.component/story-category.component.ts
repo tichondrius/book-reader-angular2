@@ -17,10 +17,10 @@ export class StoryCategoryComponent implements OnInit {
     public ntruncate: number = 150;
     public enableTruncate: boolean = true;
     public urlImg = AppConfig.urlImg;
-    public lstStories: IStory[];
     public catID: string;
     public category: ICategory;
     public lstChaps: IStory[];
+    isLoadStoryDone: boolean = false;
     public collapse = false;
     constructor(private _storyService: StoryService,
                 private route: ActivatedRoute,
@@ -30,14 +30,15 @@ export class StoryCategoryComponent implements OnInit {
     collapseChaps():void{
         this.collapse = !this.collapse;
     }
+    loadStoryDone(value: boolean)
+    {
+        this.isLoadStoryDone = value;
+    }
     ngOnInit(): void{
         this.subscription = this.route.params.subscribe(params => {
             this.category = undefined;
-            this.lstStories = undefined;
             this.catID = params['catID'];
-            //get story by category id
-            this._storyService.getStoryByCategoryID(this.catID)
-                .subscribe(stories => {this.lstStories = stories});
+         
             //get category info by category id
             this._categoryService.getCategoryById(this.catID)
                 .subscribe(category => {

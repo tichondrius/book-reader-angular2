@@ -3,7 +3,7 @@
 import { Component } from '@angular/core';
 import { AppConfig } from '../../codes/secrect'
 
-import {OnInit, Output, EventEmitter} from '@angular/core'
+import {OnInit, Output, EventEmitter, Input} from '@angular/core'
 import ICategory from '../../category/category'
 import {CategoryService} from '../../category/category.service'
 
@@ -14,11 +14,13 @@ import {CategoryService} from '../../category/category.service'
 })
 export class NewCatListComponent{
     @Output() loadDone = new EventEmitter();
+    @Input() title: string;
     public urlImg = AppConfig.urlImg;
     public lstCategories: ICategory[];
     public pageTitle: string = 'TruyenNham.vn';
     public IsHaveStory: boolean = true;
     public IsLoadingMore: boolean = false;
+    public IsLoadData: boolean = true;
     public orders: any = [
         {name: 'Theo ngày', value: "dateUpdate"},
         {name: 'Theo tên', value: 'name'},
@@ -36,11 +38,11 @@ export class NewCatListComponent{
         this.loadData();
     }
     loadData(): void{
-        this.lstCategories = undefined;
-
+        this.IsLoadData = true;
         this._categoryService.getListForHome(this.order.value, this.orderby.value).subscribe(categories => {
             this.lstCategories = categories;
             this.loadDone.emit(true);
+            this.IsLoadData = false;
         })
     }
     onChangeOrder(i: any): void{

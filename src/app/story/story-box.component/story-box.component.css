@@ -1,8 +1,21 @@
-.story-box-image{
-    height: 180px;
+
+.story-box-container
+{
+    display: flex;
+    margin-top: 10px;
+    background-color: #fff;
+    padding: 10px;
+    align-items:center
 }
-@media (max-width: 580px){
-    .story-box-image{
-        height: auto;
-    }
+.image-chapter {
+ flex: 3;
+ 
+}
+.img-item{
+    max-width:100%
+    
+}
+.info-chapter {
+ flex: 7;
+ margin: 10px;
 }
